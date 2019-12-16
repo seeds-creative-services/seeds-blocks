@@ -1,0 +1,12 @@
+.wp-block[data-type="elements/spacer"] .block-spacer {
+  background-color: #EEEEEE;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 48px;
+  font-size: .65rem;
+  color: #888888;
+  font-weight: 600;
+  display: block;
+  height: 48px;
+  width: 100%;
+}
