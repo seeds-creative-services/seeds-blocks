@@ -124,7 +124,7 @@ class SeedsBlocks {
               self::$blocks['blocks'][] = array(
                 "slug" => $block,
                 "dir" => "{$blocksTheme}/{$category}/{$block}",
-                "url" => get_template_directory_uri() . "/theme/blocks/{$category}/{$block}",
+                "url" => get_stylesheet_directory_uri() . "/theme/blocks/{$category}/{$block}",
                 "path" => "{$category}/{$block}",
                 "title" => ucwords(str_replace("-", " ", $block)),
                 "category" => $category
