@@ -1,0 +1,47 @@
+.wp-block[data-type="grids/row"] {
+  font-family: sans-serif;
+}
+
+.wp-block[data-type="grids/row"] .block-row {
+  border: 1px dashed #CCC;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.wp-block[data-type="grids/row"] .block-row > .class-wrapper::before {
+  content: 'Row';
+}
+
+.wp-block[data-type="grids/row"] .block-row .editor-inner-blocks {
+  padding: 1rem;
+  width: 100%;
+}
+
+.wp-block[data-type="grids/row"] .block-row .editor-block-list__layout {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-right: 0;
+  margin-left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wp-block[data-type="grids/row"] .block-row .editor-block-list__layout .block-list-appender {
+  padding: 0 1rem 1rem;
+  display: block;
+  clear: both;
+  width: 100%;
+}

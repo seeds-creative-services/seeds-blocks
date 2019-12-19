@@ -20,9 +20,13 @@
   };
 
 
-  $(document).ready(() => {
+  $(window).on('load', () => {
 
-    
+    setTimeout(() => {
+
+      $('.edit-post-visual-editor').addClass('is-loaded')
+
+    }, 1000)
 
   });
 

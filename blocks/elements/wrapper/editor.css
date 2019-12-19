@@ -1,0 +1,16 @@
+.wp-block[data-type="elements/wrapper"] {
+  font-family: sans-serif;
+}
+
+.wp-block[data-type="elements/wrapper"] > .editor-block-list__block-edit .block-wrapper {
+  border: 1px solid #CCCCCC;
+  position: relative;
+}
+
+.wp-block[data-type="elements/wrapper"] > .editor-block-list__block-edit .block-wrapper > .class-wrapper::before {
+  content: 'Wrapper';
+}
+
+.wp-block[data-type="elements/wrapper"] .editor-inner-blocks {
+  padding: 1rem;
+}

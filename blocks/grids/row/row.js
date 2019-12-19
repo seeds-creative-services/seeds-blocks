@@ -5,8 +5,8 @@
 
 
   var svgIcon = el('svg', {width: '24', height: '24', viewBox: '0 0 24 24'},
-    el('path', {fill: '#EAA740', d: 'M8 11h3v10h2V11h3l-4-4-4 4zM4 3v2h16V3H4z'}),
-    el('path', {fill: 'none',    d: 'M0 0h24v24H0z'})
+    el('path', {fill: 'none',    d: 'M0 0h24v24H0z'}),
+    el('path', {fill: '#EAA740', d: 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z'})
   );
 
 
@@ -14,17 +14,16 @@
    * Register the "Video Embed" content block.
    */
 
-  blocks.registerBlockType('elements/spacer', {
+  blocks.registerBlockType('grids/row', {
 
 
-    title: i18n.__('Vertical Spacer', 'elements'),
-    category: 'elements',
+    title: i18n.__('Grid Row', 'grids'),
+    category: 'grids',
     icon: svgIcon,
 
 
     attributes: {
-      size: { type: 'string', default: '1' },
-      domClasses: { type: 'string' },
+      classes: { type: 'string' },
       domID: { type: 'string' }
     },
 
@@ -32,28 +31,26 @@
     edit: function(props) {
 
       var attributes = props.attributes;
+      var classesID = '';
+
+      if(attributes.domID) {
+        classesID = classesID + '#' + attributes.domID
+      }
+
+      if(attributes.classes) {
+        classesID = classesID + ' .';
+        classesID = classesID + String(attributes.classes).replace(' ', '.');
+      }
+
 
       return [
 
         el(editor.InspectorControls, { key: 'inspector' },
 
           el(components.PanelBody, {
-            title: i18n.__('Spacer Settings'),
+            title: i18n.__('Row Settings'),
             initialOpen: true
-          },
-          
-            el(components.TextControl, {
-              type: 'number',
-              min: 1,
-              max: 24,
-              label: 'Spacer Size',
-              value: attributes.size,
-              onChange: function(value) {
-                props.setAttributes({ size: value })
-              }
-            })
-          
-          ),
+          }),
 
           el(components.PanelBody, {
             title: i18n.__('Advanced Settings'),
@@ -75,9 +72,9 @@
               el(components.TextControl, {
                 type: 'text',
                 label: i18n.__('Element Classes'),
-                value: attributes.domClasses,
+                value: attributes.classes,
                 onChange: function(value) {
-                  props.setAttributes({ domClasses: value })
+                  props.setAttributes({ classes: value })
                 }
               })
             )
@@ -86,10 +83,13 @@
 
         ),
 
-        el( 'div', { class: 'block-spacer', style: {
-          'height': attributes.size + 'rem', 
-          'line-height': attributes.size + 'rem'
-        } }, 'Vertical Spacer')
+        el( 'div', { class: 'block-row' },
+
+          el('div', { class: 'class-wrapper', 'data-classes': classesID }),
+
+          el(editor.InnerBlocks, { allowedBlocks: ['grids/column'] })
+
+        )
 
       ];
 

@@ -46,6 +46,10 @@ class SeedsBlocks {
       $scriptURL = plugins_url() . "/seeds-blocks/seeds-blocks.js";
       wp_register_script('seeds-blocks-script', $scriptURL, array('jquery'), '1.0.0', 'all');
       wp_enqueue_script('seeds-blocks-script');
+
+      $styleURL = plugins_url() . "/seeds-blocks/seeds-blocks.css";
+      wp_register_style('seeds-blocks-style', $styleURL, [], '1.0.0', 'all');
+      wp_enqueue_style('seeds-blocks-style');
     
     });
 
@@ -300,7 +304,7 @@ class SeedsBlocks {
 
 
         /** 
-         * Register the blocks Stylesheet file.
+         * Register the blocks front-end styles.
          */
 
         if(file_exists("{$block['dir']}/{$block['slug']}.css")) {
@@ -310,6 +314,22 @@ class SeedsBlocks {
             "{$block['url']}/{$block['slug']}.css",
             array('wp-edit-blocks'),
             filemtime("{$block['dir']}/{$block['slug']}.css")
+          );
+
+        }
+
+
+        /** 
+         * Register the blocks back-end styles.
+         */
+
+        if(file_exists("{$block['dir']}/editor.css")) {
+
+          wp_register_style(
+            "block__{$block['slug']}__style",
+            "{$block['url']}/editor.css",
+            array('wp-edit-blocks'),
+            filemtime("{$block['dir']}/editor.css")
           );
 
         }

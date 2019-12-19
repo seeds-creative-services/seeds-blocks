@@ -1,6 +1,7 @@
 .wp-block[data-type="elements/spacer"] .block-spacer {
-  background-color: #EEEEEE;
+  background-color: #F8F8F8;
   text-transform: uppercase;
+  font-family: sans-serif;
   text-align: center;
   line-height: 48px;
   font-size: .65rem;
