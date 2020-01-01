@@ -74,34 +74,38 @@ class SeedsBlocks {
      * Load global custom blocks from the plugin.
      */
 
-    foreach(scandir($blocksPlugin) as $category) {
+    if(file_exists($blocksPlugin) && is_dir($blocksPlugin)) {
 
-      if(!in_array($category, array('.', '..')) && is_dir("{$blocksPlugin}/{$category}")) {
+      foreach(scandir($blocksPlugin) as $category) {
 
-        $counter_category++;
-
-          self::$blocks['categories'][$counter_category] = array(
-            "slug" => $category,
-            "title" => ucwords(str_replace("-", " ", $category))
-          );
-
-          foreach(scandir("{$blocksPlugin}/{$category}") as $block) {
-
-            if(!in_array($block, array('.', '..')) && is_dir("{$blocksPlugin}/{$category}/{$block}")) {
-
-              self::$blocks['blocks'][] = array(
-                "slug" => $block,
-                "dir" => "{$blocksPlugin}/{$category}/{$block}",
-                "url" => plugins_url() . "/seeds-blocks/blocks/{$category}/{$block}",
-                "path" => "{$category}/{$block}",
-                "title" => ucwords(str_replace("-", " ", $block)),
-                "category" => $category
-              );
-
+        if(!in_array($category, array('.', '..')) && is_dir("{$blocksPlugin}/{$category}")) {
+  
+          $counter_category++;
+  
+            self::$blocks['categories'][$counter_category] = array(
+              "slug" => $category,
+              "title" => ucwords(str_replace("-", " ", $category))
+            );
+  
+            foreach(scandir("{$blocksPlugin}/{$category}") as $block) {
+  
+              if(!in_array($block, array('.', '..')) && is_dir("{$blocksPlugin}/{$category}/{$block}")) {
+  
+                self::$blocks['blocks'][] = array(
+                  "slug" => $block,
+                  "dir" => "{$blocksPlugin}/{$category}/{$block}",
+                  "url" => plugins_url() . "/seeds-blocks/blocks/{$category}/{$block}",
+                  "path" => "{$category}/{$block}",
+                  "title" => ucwords(str_replace("-", " ", $block)),
+                  "category" => $category
+                );
+  
+              }
+  
             }
-
-          }
-
+  
+        }
+  
       }
 
     }
@@ -110,34 +114,38 @@ class SeedsBlocks {
      * Load specific custom blocks from the theme.
      */
 
-    foreach(scandir($blocksTheme) as $category) {
+    if(file_exists($blocksTheme) && is_dir($blocksTheme)) {
 
-      if(!in_array($category, array('.', '..')) && is_dir("{$blocksTheme}/{$category}")) {
+      foreach(scandir($blocksTheme) as $category) {
 
-        $counter_category++;
-
-          self::$blocks['categories'][$counter_category] = array(
-            "slug" => $category,
-            "title" => ucwords(str_replace("-", " ", $category))
-          );
-
-          foreach(scandir("{$blocksTheme}/{$category}") as $block) {
-
-            if(!in_array($block, array('.', '..')) && is_dir("{$blocksTheme}/{$category}/{$block}")) {
-
-              self::$blocks['blocks'][] = array(
-                "slug" => $block,
-                "dir" => "{$blocksTheme}/{$category}/{$block}",
-                "url" => get_stylesheet_directory_uri() . "/theme/blocks/{$category}/{$block}",
-                "path" => "{$category}/{$block}",
-                "title" => ucwords(str_replace("-", " ", $block)),
-                "category" => $category
-              );
-
+        if(!in_array($category, array('.', '..')) && is_dir("{$blocksTheme}/{$category}")) {
+  
+          $counter_category++;
+  
+            self::$blocks['categories'][$counter_category] = array(
+              "slug" => $category,
+              "title" => ucwords(str_replace("-", " ", $category))
+            );
+  
+            foreach(scandir("{$blocksTheme}/{$category}") as $block) {
+  
+              if(!in_array($block, array('.', '..')) && is_dir("{$blocksTheme}/{$category}/{$block}")) {
+  
+                self::$blocks['blocks'][] = array(
+                  "slug" => $block,
+                  "dir" => "{$blocksTheme}/{$category}/{$block}",
+                  "url" => get_stylesheet_directory_uri() . "/theme/blocks/{$category}/{$block}",
+                  "path" => "{$category}/{$block}",
+                  "title" => ucwords(str_replace("-", " ", $block)),
+                  "category" => $category
+                );
+  
+              }
+  
             }
-
-          }
-
+  
+        }
+  
       }
 
     }
