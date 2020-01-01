@@ -1,24 +1,6 @@
 (function (blocks, editor, components, i18n, element) {
 
 
-  $(window).on('load', function() {
-
-    $('div[data-type="grids/column"]').each(function(i) {
-
-      var column = $('div[data-type="grids/column"]').eq(i);
-      var block = column.find('div[data-block]').first()
-      var wrapper = block.find('.class-wrapper').first()
-      var size = wrapper.attr('data-size').replace('col-', '')
-
-      column.attr('data-size', size)
-  
-      console.log(size)
-  
-    });
-
-  })
-
-
   var el = element.createElement;
 
 
@@ -352,6 +334,24 @@
 
 
   });
+
+
+  $(window).on('load', function() {
+
+    $('div[data-type="grids/column"]').each(function(i) {
+
+      var column = $('div[data-type="grids/column"]').eq(i);
+      var block = column.find('div[data-block]').first()
+      var wrapper = block.find('.class-wrapper').first()
+      var size = wrapper.attr('data-size').replace('col-', '')
+
+      column.attr('data-size', size)
+  
+      console.log(size)
+  
+    });
+
+  })
 
 
 })(

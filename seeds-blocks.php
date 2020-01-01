@@ -43,6 +43,11 @@ class SeedsBlocks {
 
     add_action('admin_enqueue_scripts', function() {
 
+      // Load latest version of jQuery.
+      wp_deregister_script('jquery');
+			wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', [], '3.4.1');
+			wp_enqueue_script('jquery');
+
       $scriptURL = plugins_url() . "/seeds-blocks/seeds-blocks.js";
       wp_register_script('seeds-blocks-script', $scriptURL, array('jquery'), '1.0.0', 'all');
       wp_enqueue_script('seeds-blocks-script');
