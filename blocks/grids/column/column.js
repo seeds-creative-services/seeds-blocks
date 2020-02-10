@@ -63,7 +63,7 @@
         el(editor.InspectorControls, { key: 'inspector' },
 
           el(components.PanelBody, {
-            title: i18n.__('Column Desktop Settings'),
+            title: i18n.__('Desktop Settings'),
             initialOpen: true
           },
 
@@ -168,7 +168,7 @@
           ),
 
           el(components.PanelBody, {
-            title: i18n.__('Column Mobile Settings'),
+            title: i18n.__('Mobile Settings'),
             initialOpen: false
           },
           

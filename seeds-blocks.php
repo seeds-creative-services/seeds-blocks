@@ -352,22 +352,11 @@ class SeedsBlocks {
          * Register the custom block.
          */
 
-        register_block_type("{$block['path']}", array(
+          if(file_exists("{$block['dir']}/{$block['slug']}.php")) {
 
-          'editor_script' => "block__{$block['slug']}__script",
-          'editor_style'  => "block__{$block['slug']}__style",
-
-          'render_callback' => function($attributes, $content) {
-
-            if(file_exists("{$block['dir']}/{$block['slug']}.php")) {
-
-              include("{$block['dir']}/{$block['slug']}.php");
-
-            }
+              include_once("{$block['dir']}/{$block['slug']}.php");
 
           }
-
-        ));
 
       }
       

@@ -7,7 +7,9 @@ register_block_type("{$block['path']}", array(
 
     'render_callback' => function($attributes, $content) {
 
-        $output = "<div class='spacer'></div>";
+        $output = "<div class='flex flex-row flex-wrap'>";
+        $output .= $content;
+        $output .= "</div>";
 
         return $output;
 

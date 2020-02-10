@@ -7,7 +7,9 @@ register_block_type("{$block['path']}", array(
 
     'render_callback' => function($attributes, $content) {
 
-        $output = "<div class='spacer'></div>";
+        $output = "<div class='wrapper mx-auto'>";
+        $output .= $content;
+        $output .= "</div>";
 
         return $output;
 
