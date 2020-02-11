@@ -7,7 +7,10 @@ register_block_type("{$block['path']}", array(
 
     'render_callback' => function($attributes, $content) {
 
-        $output = "<div class='spacer'></div>";
+        $classes  = "mt-" . ($attributes['mobileSize'] ?? 1) * 4;
+        $classes .= " md:mt-" . ($attributes['size'] ?? 1) * 4;
+
+        $output = "<div class='spacer block {$classes}'></div>";
 
         return $output;
 

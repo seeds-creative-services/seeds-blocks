@@ -7,7 +7,7 @@ register_block_type("{$block['path']}", array(
 
     'render_callback' => function($attributes, $content) {
 
-        $output = "<div class='flex flex-row flex-wrap'>";
+        $output = "<div class='row flex flex-row flex-wrap'>";
         $output .= $content;
         $output .= "</div>";
 

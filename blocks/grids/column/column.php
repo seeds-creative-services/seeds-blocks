@@ -20,7 +20,7 @@ register_block_type("{$block['path']}", array(
         $classes .= " md:pb-" . ($attributes['paddingy2'] ?? 1) * 4;
         $classes .= " md:pl-" . ($attributes['paddingx1'] ?? 1) * 4;
 
-        $output = "<div class='{$classes}'>";
+        $output = "<div class='column {$classes}'>";
         $output .= $content;
         $output .= "</div>";
 

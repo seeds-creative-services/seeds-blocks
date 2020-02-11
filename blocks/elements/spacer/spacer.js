@@ -24,6 +24,7 @@
 
     attributes: {
       size: { type: 'string', default: '1' },
+      mobileSize: { tpye: 'string', default: '1' },
       domClasses: { type: 'string' },
       domID: { type: 'string' }
     },
@@ -51,7 +52,18 @@
               onChange: function(value) {
                 props.setAttributes({ size: value })
               }
-            })
+            }),
+
+              el(components.TextControl, {
+                  type: 'number',
+                  min: 1,
+                  max: 24,
+                  label: 'Spacer Size (Mobile)',
+                  value: attributes.mobileSize,
+                  onChange: function(value) {
+                      props.setAttributes({ mobileSize: value })
+                  }
+              })
           
           ),
 
