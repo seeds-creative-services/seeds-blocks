@@ -1,7 +1,7 @@
 <?php
 
 /**
-Plugin Name: Seeds Content Blocks
+Plugin Name: SEEDS: Content Blocks
 Description: Custom content blocks for building full-featured pages.
 Version: 1.0.0
 Author: Seeds Creative Services, LLC.
@@ -9,7 +9,9 @@ Author URI: https://seedscreativeservices.com
 Text Domain: seeds_blocks
 */
 
-class SeedsBlocks {
+namespace SEEDS\PLUGINS;
+
+class Blocks {
   
   public static $blocks = array();
 
@@ -45,8 +47,8 @@ class SeedsBlocks {
 
       // Load latest version of jQuery.
       wp_deregister_script('jquery');
-			wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', [], '3.4.1');
-			wp_enqueue_script('jquery');
+      wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', [], '3.4.1');
+      wp_enqueue_script('jquery');
 
       $scriptURL = plugins_url() . "/seeds-blocks/seeds-blocks.js";
       wp_register_script('seeds-blocks-script', $scriptURL, array('jquery'), '1.0.0', 'all');
@@ -366,5 +368,4 @@ class SeedsBlocks {
 
 }
 
-global $SeedsBlocks;
-$SeedsBlocks = new SeedsBlocks;
+return new Blocks;
