@@ -13,12 +13,15 @@ register_block_type("{$block['path']}", array(
         $classes .= " pr-" . ($attributes['paddingMobilex2'] ?? 1) * 4;
         $classes .= " pb-" . ($attributes['paddingMobiley2'] ?? 1) * 4;
         $classes .= " pl-" . ($attributes['paddingMobilex1'] ?? 1) * 4;
+        $classes .= " " . $attributes['visibleMobile'];
+
         $classes .= " md:w-" . ($attributes['size'] ?? 12) . "/12";
         $classes .= " md:order-" . ($attributes['order'] ?? 1);
         $classes .= " md:pt-" . ($attributes['paddingy1'] ?? 1) * 4;
         $classes .= " md:pr-" . ($attributes['paddingx2'] ?? 1) * 4;
         $classes .= " md:pb-" . ($attributes['paddingy2'] ?? 1) * 4;
         $classes .= " md:pl-" . ($attributes['paddingx1'] ?? 1) * 4;
+        $classes .= " " . $attributes['visible'];
 
         $output = "<div class='column {$classes}'>";
         $output .= $content;

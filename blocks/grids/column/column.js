@@ -23,12 +23,14 @@
 
     attributes: {
 
+      visible: { type: 'boolean', default: true },
       size: { type: 'string', default: '12' },
       paddingx1: { type: 'string', default: '1' },
       paddingx2: { type: 'string', default: '1' },
       paddingy1: { type: 'string', default: '1' },
       paddingy2: { type: 'string', default: '1' },
 
+      visibleMobile: { type: 'boolean', default: true },
       sizeMobile: { type: 'string', default: '12' },
       paddingMobilex1: { type: 'string', default: '1' },
       paddingMobilex2: { type: 'string', default: '1' },
@@ -67,13 +69,30 @@
             initialOpen: true
           },
 
+            el('div', { class: 'sidebar-options-set' }, 
+              el('fieldset', { class: 'inline-field' },
+                el('strong', {}, 'Show Column'),
+                el('label', {}, 
+                  el('span', { class: 'input-toggle' }, 
+                    el('input', { 
+                      type: 'checkbox',
+                      checked: attributes.visible == 'md:block' ? true : false,
+                      onChange: function(event) {
+                        props.setAttributes({ visible: event.target.checked ? 'md:block' : 'md:hidden' });
+                      } 
+                    })
+                  )
+                )
+              )
+            ),
+
             el( 'div', { class: 'sidebar-options-set' },
 
               el(components.SelectControl, {
 
                 label: i18n.__('Column Width'),
-                selected: attributes.size ? attributes.size : '12',
-                value: attributes.size ? attributes.size : '12',
+                selected: attributes.size || '12',
+                value: attributes.size || '12',
 
                 options: [
                   {label: '12 / 12',  value: '12'},
@@ -171,6 +190,23 @@
             title: i18n.__('Mobile Settings'),
             initialOpen: false
           },
+
+            el('div', { class: 'sidebar-options-set' }, 
+              el('fieldset', { class: 'inline-field' },
+                el('strong', {}, 'Show Column'),
+                el('label', {}, 
+                  el('span', { class: 'input-toggle' }, 
+                    el('input', { 
+                      type: 'checkbox',
+                      checked: attributes.visibleMobile == 'block' ? true : false,
+                      onChange: function(event) {
+                        props.setAttributes({ visibleMobile: event.target.checked ? 'block' : 'hidden' });
+                      } 
+                    })
+                  )
+                )
+              )
+            ),
           
             el( 'div', { class: 'sidebar-options-set' },
 
